@@ -6,10 +6,10 @@ export class Commande {
     private coffeeMaker: CoffeeMaker;
     public static counter: number = 0;
 
-    constructor(order: string){
+    constructor(order: string, money: number){
         this.order = order;
         const items: string[] = this.parseOrder();
-        this.coffeeMaker = new CoffeeMaker(items);
+        this.coffeeMaker = new CoffeeMaker(items, money);
         Commande.counter++;
     }
     
