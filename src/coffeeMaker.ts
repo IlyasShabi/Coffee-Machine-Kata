@@ -30,15 +30,16 @@ export class CoffeeMaker {
 
     private makeDrink = (): string => {
         const drinkStr = `Drink maker makes 1 ${this.drink.label} with`;
-        if (this.sugar) {
-            return `${drinkStr} ${this.sugar} sugar${this.sugar > 1 ? 's' : ''} and a stick`;
-        } else {
+        if(this.sugar){
+            return `${drinkStr} ${this.sugar} sugar${this.sugar > 1 ? 's' :''} and a stick`;
+        }else{
             return `${drinkStr} no sugar - and therefore no stick`;
         }
     }
 
     private needMoney = (): string => {
-        return 'Need money';
+        const diff: string = (this.drink.price - this.money).toFixed(1);
+        return `Sorry we can't make your order. You need ${diff} other`;
     }
 
 }

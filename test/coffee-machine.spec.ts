@@ -16,10 +16,16 @@ describe('Coffee Machine test cases', () => {
 		expect(result).toEqual("Drink maker makes 1 chocolate with no sugar - and therefore no stick");
 	});
 
-	it('C:2:0', () => {
+	it('Coffee with 2 sugars => C:2:0', () => {
         const commande  = new Commande("C:2:0", 1);
         const result = commande.getCommande();
 		expect(result).toEqual("Drink maker makes 1 coffee with 2 sugars and a stick")
+	});
+
+	it('We need more money => C:2:0', () => {
+        const commande  = new Commande("C:2:0", 0.5);
+        const result = commande.getCommande();
+		expect(result).toEqual("Sorry we can't make your order. You need 0.1 other")
 	});
 
 });
