@@ -1,4 +1,5 @@
 import { Drinks, IDrink } from './drinks';
+import { BeverageQuantityChecker } from './BeverageQuantityChecker';
 
 export class CoffeeMaker {
 
@@ -8,6 +9,7 @@ export class CoffeeMaker {
     private money: number;
     public static history: Map<string, number> = new Map<string, number>();
     public static amount: number = 0;
+    public static beverage: Object = {water: 3, milk: 1.5};
 
     constructor(items: string[], money: number) {
         this.drink = Drinks[items[0]];
@@ -26,7 +28,12 @@ export class CoffeeMaker {
     }
 
     public getOrder = (): string => {
-        return this.money >= this.drink.price ? this.makeDrink() : this.needMoney();
+        if(this.money < this.drink.price){
+            return this.needMoney();
+        }else if(this.beverageCheck()){
+            return this.needBeverage();
+        }
+        return this.makeDrink();
     }
 
     private makeDrink = (): string => {
@@ -37,6 +44,10 @@ export class CoffeeMaker {
     private needMoney = (): string => {
         const diff: string = (this.drink.price - this.money).toFixed(1);
         return `Sorry we can't make your order. You need ${diff} other`;
+    }
+
+    private needBeverage = (): string => {
+        return `Sorry we can't make your order. No more ${this.drink.beverageBase}`;
     }
 
     private updateReporting = () => {
@@ -52,6 +63,11 @@ export class CoffeeMaker {
     public getNumberOfSales = () : number => {
         const count = CoffeeMaker.history.get(this.drink.label);
         return count || 0;
+    }
+
+    private beverageCheck = () => {
+       const beverageChecker: BeverageQuantityChecker = new BeverageQuantityChecker();
+       return beverageChecker.isEmpty(this.drink.beverageBase);
     }
 
 }
