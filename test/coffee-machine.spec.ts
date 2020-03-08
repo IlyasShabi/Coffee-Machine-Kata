@@ -60,16 +60,16 @@ describe('Coffee Machine test cases', () => {
 		expect(result).toEqual("Drink: extra hot coffee - Sugar: 2 - Stick: 1")
 	});
 
-	it('Extra hot Coffee with 3 sugars => Ch:3:0', () => {
-        const commande  = new Commande("Ch:3:0", 1);
+	it('No more milk for Chocolate', () => {
+        const commande  = new Commande("Hh:3:0", 1);
         const result = commande.getCommande();
-		expect(result).toEqual("Sorry we can't make your order. No more Milk")
+		expect(result).toEqual("Sorry we can't make your order. No more milk")
 	});
 
-	it('Juice order => O::', () => {
+	it('No more Water for Juice', () => {
         const commande  = new Commande("O::", 0.8);
-        const result = commande.getCommande();
-		expect(result).toEqual("Sorry we can't make your order. No more Water")
+		const result = commande.getCommande();
+		expect(result).toEqual("Sorry we can't make your order. No more water")
 	});
 
 });
