@@ -38,7 +38,7 @@ describe('Coffee Machine test cases', () => {
 		expect(result).toEqual("Drink: juice - Sugar: 0 - Stick: 0")
 	});
 
-	it('Extra hot Tea with 3 sugars and a stick => T:3:0', () => {
+	it('Extra hot Tea with 3 sugars and a stick => Th:3:0', () => {
 
 		const commande  = new Commande("Th:3:0", 1);
         const result = commande.getCommande();
@@ -46,7 +46,7 @@ describe('Coffee Machine test cases', () => {
         
 	});
 
-	it('Extra hot Chocolate with one sugar and one stick => H:1:0', () => {
+	it('Extra hot Chocolate with one sugar and one stick => Hh:1:0', () => {
         const commande  = new Commande("Hh:1:0", 1);
 		const result = commande.getCommande();
 		const total = commande.getNumberOfSalesByDrink();
@@ -54,10 +54,22 @@ describe('Coffee Machine test cases', () => {
 		expect(result).toEqual("Drink: extra hot chocolate - Sugar: 1 - Stick: 1");
 	});
 
-	it('Extra hot Coffee with 2 sugars => C:2:0', () => {
+	it('Extra hot Coffee with 2 sugars => Ch:2:0', () => {
         const commande  = new Commande("Ch:2:0", 1);
         const result = commande.getCommande();
 		expect(result).toEqual("Drink: extra hot coffee - Sugar: 2 - Stick: 1")
+	});
+
+	it('Extra hot Coffee with 3 sugars => Ch:3:0', () => {
+        const commande  = new Commande("Ch:3:0", 1);
+        const result = commande.getCommande();
+		expect(result).toEqual("Sorry we can't make your order. No more Milk")
+	});
+
+	it('Juice order => O::', () => {
+        const commande  = new Commande("O::", 0.8);
+        const result = commande.getCommande();
+		expect(result).toEqual("Sorry we can't make your order. No more Water")
 	});
 
 });
