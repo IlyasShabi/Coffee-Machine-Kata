@@ -49,4 +49,9 @@ export class CoffeeMaker {
         CoffeeMaker.amount++;
     }
 
+    public getNumberOfSales = () : number => {
+        const count = CoffeeMaker.history.get(this.drink.label);
+        return count || 0;
+    }
+
 }

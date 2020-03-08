@@ -5,7 +5,9 @@ describe('Coffee Machine test cases', () => {
 	it('Tea with 1 sugar and a stick => T:1:0', () => {
 
 		const commande  = new Commande("T:1:0", 1);
-        const result = commande.getCommande();
+		const result = commande.getCommande();
+		const total = commande.getTotalAmount();
+		expect(total).toEqual(0.4)
         expect(result).toEqual("Drink: tea - Sugar: 1 - Stick: 1");
         
 	});
@@ -18,7 +20,9 @@ describe('Coffee Machine test cases', () => {
 
 	it('Coffee with 2 sugars => C:2:0', () => {
         const commande  = new Commande("C:2:0", 1);
-        const result = commande.getCommande();
+		const result = commande.getCommande();
+		const total = commande.getTotalAmount();
+		expect(total).toEqual(1)
 		expect(result).toEqual("Drink: coffee - Sugar: 2 - Stick: 1")
 	});
 
@@ -44,7 +48,9 @@ describe('Coffee Machine test cases', () => {
 
 	it('Extra hot Chocolate with one sugar and one stick => H:1:0', () => {
         const commande  = new Commande("Hh:1:0", 1);
-        const result = commande.getCommande();
+		const result = commande.getCommande();
+		const total = commande.getNumberOfSalesByDrink();
+		expect(total).toEqual(1)
 		expect(result).toEqual("Drink: extra hot chocolate - Sugar: 1 - Stick: 1");
 	});
 

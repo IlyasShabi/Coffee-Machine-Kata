@@ -19,7 +19,7 @@ export class Commande {
         return this.coffeeMaker.getOrder();
     }
 
-    public getReport = () => {
+    public getReport = (): string => {
         let output: string = `We earned : ${CoffeeMaker.amount}$\n`;
         CoffeeMaker.history.forEach((sales, drink) => {
             output += `Drink : ${drink} - Sales : ${sales}\n`;
@@ -27,5 +27,12 @@ export class Commande {
         return output;
     }
 
+    public getTotalAmount = ():number => {
+        return CoffeeMaker.amount;
+    }
+
+    public getNumberOfSalesByDrink = () : number => {
+        return this.coffeeMaker.getNumberOfSales();
+    }
 
 }
