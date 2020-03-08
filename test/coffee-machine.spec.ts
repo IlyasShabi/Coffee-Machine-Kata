@@ -43,13 +43,13 @@ describe('Coffee Machine test cases', () => {
 	});
 
 	it('Extra hot Chocolate with one sugar and one stick => H:1:0', () => {
-        const commande  = new Commande("H:1:0", 1);
+        const commande  = new Commande("Hh:1:0", 1);
         const result = commande.getCommande();
 		expect(result).toEqual("Drink: extra hot chocolate - Sugar: 1 - Stick: 1");
 	});
 
 	it('Extra hot Coffee with 2 sugars => C:2:0', () => {
-        const commande  = new Commande("C:2:0", 1);
+        const commande  = new Commande("Ch:2:0", 1);
         const result = commande.getCommande();
 		expect(result).toEqual("Drink: extra hot coffee - Sugar: 2 - Stick: 1")
 	});
