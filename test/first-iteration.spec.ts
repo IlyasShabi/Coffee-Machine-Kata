@@ -16,5 +16,11 @@ describe('First Iteration test cases', () => {
 		expect(result).toEqual("Drink maker makes 1 chocolate with no sugar - and therefore no stick");
 	});
 
+	it('C:2:0', () => {
+        const commande  = new Commande("C:2:0");
+        const result = commande.getCommande();
+		expect(result).toEqual("Drink maker makes 1 coffee with 2 sugars and a stick")
+	});
+
 });
 

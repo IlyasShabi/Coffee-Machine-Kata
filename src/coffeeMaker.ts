@@ -26,7 +26,7 @@ export class CoffeeMaker {
         const drinkStr = `Drink maker makes 1 ${this.drink} with`;
 
         if(this.sugar){
-            return `${drinkStr} ${this.sugar} sugar and a stick`;
+            return `${drinkStr} ${this.sugar} sugar${this.sugar > 1 ? 's' :''} and a stick`;
         }else{
             return `${drinkStr} no sugar - and therefore no stick`;
         }
