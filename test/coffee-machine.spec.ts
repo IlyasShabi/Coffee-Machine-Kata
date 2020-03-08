@@ -28,5 +28,11 @@ describe('Coffee Machine test cases', () => {
 		expect(result).toEqual("Sorry we can't make your order. You need 0.1 other")
 	});
 
+	it('Juice order => O::', () => {
+        const commande  = new Commande("O::", 0.8);
+        const result = commande.getCommande();
+		expect(result).toEqual("Drink: juice - Sugar: 0 - Stick: 0")
+	});
+
 });
 
