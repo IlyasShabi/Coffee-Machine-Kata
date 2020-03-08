@@ -4,12 +4,15 @@ This project is my proposed solution for Coffee Machine Kata using Ty
 
 ## Developement Environement
 
-In order to run this project you need to install node > 10 in your machine.
+For this project i used:
+  * Node 12.
+  * Jest 
+  * TypeScript
 
 
 ## How to run ?
 
-Clone or download the project, then npm install and run npm test to see the result in your console.
+Clone or download the project, then **npm install** and run npm test to see the result in your console.
 
 ## Explanation:
 
