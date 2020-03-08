@@ -46,7 +46,7 @@ export class CoffeeMaker {
         }else{
             CoffeeMaker.history.set(this.drink.label, 1);
         }
-        CoffeeMaker.amount++;
+        CoffeeMaker.amount += this.drink.price;
     }
 
     public getNumberOfSales = () : number => {

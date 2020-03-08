@@ -22,7 +22,7 @@ describe('Coffee Machine test cases', () => {
         const commande  = new Commande("C:2:0", 1);
 		const result = commande.getCommande();
 		const total = commande.getTotalAmount();
-		expect(total).toEqual(1)
+		expect(total).toEqual(1.5)
 		expect(result).toEqual("Drink: coffee - Sugar: 2 - Stick: 1")
 	});
 
