@@ -4,24 +4,28 @@ export class Commande {
 
     private order: string;
     private coffeeMaker: CoffeeMaker;
-    public static counter: number = 0;
 
-    constructor(order: string, money: number){
+    constructor(order: string, money: number) {
         this.order = order;
         const items: string[] = this.parseOrder();
         this.coffeeMaker = new CoffeeMaker(items, money);
-        Commande.counter++;
     }
-    
-    private parseOrder = () : string[] => {
+
+    private parseOrder = (): string[] => {
         return this.order.split(':');
     }
 
     public getCommande = (): string => {
-        return this.coffeeMaker.sendMessage();
+        return this.coffeeMaker.getOrder();
     }
 
-    public getCounter = () :number =>{
-        return Commande.counter;
+    public getReport = () => {
+        let output: string = `We earned : ${CoffeeMaker.amount}$\n`;
+        CoffeeMaker.history.forEach((sales, drink) => {
+            output += `Drink : ${drink} - Sales : ${sales}\n`;
+        });
+        return output;
     }
+
+
 }

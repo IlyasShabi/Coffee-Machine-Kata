@@ -6,6 +6,8 @@ export class CoffeeMaker {
     private sugar: number;
     private stick: number;
     private money: number;
+    public static history: Map<string, number> = new Map<string, number>();
+    public static amount: number = 0;
 
     constructor(items: string[], money: number) {
         this.drink = Drinks[items[0]];
@@ -23,17 +25,28 @@ export class CoffeeMaker {
         return this.sugar ? 1 : 0;
     }
 
-    public sendMessage = (): string => {
+    public getOrder = (): string => {
         return this.money >= this.drink.price ? this.makeDrink() : this.needMoney();
     }
 
     private makeDrink = (): string => {
-        return `Drink: ${this.drink.label} - Sugar: ${this.sugar} - Stick: ${this.stick}`
+        this.updateReporting();
+        return `Drink: ${this.drink.label} - Sugar: ${this.sugar} - Stick: ${this.stick}`;
     }
 
     private needMoney = (): string => {
         const diff: string = (this.drink.price - this.money).toFixed(1);
         return `Sorry we can't make your order. You need ${diff} other`;
+    }
+
+    private updateReporting = () => {
+        const count = CoffeeMaker.history.get(this.drink.label);
+        if(count){
+            CoffeeMaker.history.set(this.drink.label, count + 1);
+        }else{
+            CoffeeMaker.history.set(this.drink.label, 1);
+        }
+        CoffeeMaker.amount++;
     }
 
 }
