@@ -1,5 +1,3 @@
-import { CoffeeMaker } from "./coffeeMaker";
-
 export interface IEmailNotifier {
     notifyMissingDrink(drink: string): void
 }
